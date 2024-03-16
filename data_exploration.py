@@ -23,9 +23,9 @@ def data_exploration_page():
     # row a
     a1, a2, a3 ,a4, a5 = st.columns(5)
 
-    a1.metric('Total Tips', df['tip'].count())
-    a2.metric('max Tips', df['tip'].max())
-    a3.metric('min Tips', df['tip'].min())
+    a1.metric('Total # of Tips', df['tip'].count())
+    a2.metric('Maximum Tip', df['tip'].max())
+    a3.metric('Minimum Tip', df['tip'].min())
     a4.metric('Maximum Bill', df['total_bill'].max())
     a5.metric('Minimum Bill', df['total_bill'].min())
 
@@ -43,11 +43,11 @@ def data_exploration_page():
         st.plotly_chart(fig, use_container_width=True)
 
     with c2:
-        st.text('Smoker Vs. Non Smoker Vs. Tips')
+        st.text('Smoker and Non Smoker Vs. Amount of Tips')
         fig = px.pie(df, names = 'smoker', values = 'tip')
         st.plotly_chart(fig, use_container_width=True)
 
     with c3:
-        st.text('Day Vs. Tips')
+        st.text('Day Vs. Amount of Tips')
         fig = px.pie(df, names = 'day', values = 'tip', color = cat_filter, hole = 0.4)
         st.plotly_chart(fig, use_container_width=True)
